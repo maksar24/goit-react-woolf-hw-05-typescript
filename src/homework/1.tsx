@@ -5,20 +5,11 @@ type Props = {
   onContentEndVisible: () => void;
 };
 
-type IntersectionObserverOptions = {
-  root?: Element | null;
-  rootMargin?: string;
-  threshold?: number | number[];
-};
-
-// Опишіть Props
 export function Observer({ children, onContentEndVisible }: Props) {
   const endContentRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    // також можна викристати готовий типовий об'єкт IntersectionObserverInit,
-    // який має в собі всі тіж самі типи, що і мій IntersectionObserverOptions
-    const options: IntersectionObserverOptions = {
+    const options: IntersectionObserverInit = {
       rootMargin: "0px",
       threshold: 1.0,
       root: null,
